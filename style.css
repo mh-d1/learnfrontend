@@ -174,6 +174,8 @@ ul {
 
 
 .music-icon {
+    position: relative;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -181,34 +183,41 @@ ul {
     width: 18px;
     height: 18px;
 
-    font-size: 16px;
+    color: currentColor;
+}
+
+.speaker-icon {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
 
     transition:
-        transform .4s var(--ease);
+        opacity .25s ease,
+        transform .35s var(--ease);
+}
+
+.speaker-on {
+    opacity: 0;
+    transform: scale(.85);
+}
+
+.speaker-off {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.music-toggle.is-playing .speaker-off {
+    opacity: 0;
+    transform: scale(.85);
+}
+
+.music-toggle.is-playing .speaker-on {
+    opacity: 1;
+    transform: scale(1);
 }
 
 
-.music-toggle.is-playing .music-icon {
-    animation: musicPulse 1s ease-in-out infinite;
-}
-
-
-.music-label {
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-
-@keyframes musicPulse {
-    0%,
-    100% {
-        transform: scale(.85);
-    }
-
-    50% {
-        transform: scale(1.25);
-    }
-}
 
 
 /* BUTTON */
