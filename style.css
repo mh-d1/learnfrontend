@@ -553,6 +553,35 @@ ul {
         transform 1.1s var(--ease);
 }
 
+/* PROJECT LIVE PREVIEW */
+
+.project-preview {
+    position: relative;
+
+    background: #e8e8ed;
+
+    isolation: isolate;
+}
+
+
+.project-preview iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+
+    background: #ffffff;
+}
+
+
+/* Jangan ikut memperbesar iframe ketika project di-hover */
+
+.project:hover .project-preview iframe {
+    transform: none;
+}
+
 
 .project:hover .project-media img {
     transform: scale(1.025);
