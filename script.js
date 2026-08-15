@@ -89,3 +89,38 @@ document.addEventListener("visibilitychange", () => {
     }
   }
 });
+
+document.querySelectorAll(".project-preview").forEach((preview) => {
+  const glass = preview.querySelector(".preview-glass");
+  const close = preview.querySelector(".preview-close");
+
+  glass.addEventListener("click", () => {
+    preview.classList.add("is-open");
+  });
+
+  close.addEventListener("click", () => {
+    preview.classList.remove("is-open");
+  });
+});
+/* PROJECT PREVIEW */
+
+const projectPreviews = document.querySelectorAll(".project-preview");
+
+projectPreviews.forEach((preview) => {
+
+  const glass = preview.querySelector(".preview-glass");
+  const close = preview.querySelector(".preview-close");
+
+  if (!glass || !close) {
+    return;
+  }
+
+  glass.addEventListener("click", () => {
+    preview.classList.add("is-open");
+  });
+
+  close.addEventListener("click", () => {
+    preview.classList.remove("is-open");
+  });
+
+});
