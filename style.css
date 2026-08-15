@@ -563,6 +563,113 @@ ul {
     isolation: isolate;
 }
 
+.project-preview {
+    position: relative;
+}
+
+
+.project-preview iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+.preview-glass {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, .28);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    cursor: pointer;
+
+    transition:
+        opacity .4s var(--ease),
+        visibility .4s ease;
+}
+
+
+.preview-glass span {
+    padding: 11px 18px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .78);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, .08);
+}
+
+
+.preview-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 3;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .78);
+    color: var(--text);
+
+    font-size: 22px;
+    line-height: 1;
+
+    opacity: 0;
+    visibility: hidden;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        opacity .3s ease,
+        transform .3s var(--ease);
+}
+
+
+.project-preview.is-open .preview-glass {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+.project-preview.is-open .preview-close {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.preview-close:hover {
+    transform: scale(1.08);
+}
+
 
 .project-preview iframe {
     display: block;
