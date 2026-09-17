@@ -124,3 +124,79 @@ projectPreviews.forEach((preview) => {
   });
 
 });
+
+/* =========================================================
+   WEB NOTIFICATION
+========================================================= */
+
+const notificationToggle = document.querySelector(
+  ".notification-toggle"
+);
+
+const notificationLabel = document.querySelector(
+  ".notification-label"
+);
+
+if (notificationToggle && "Notification" in window) {
+
+  const updateNotificationUI = () => {
+
+    if (Notification.permission === "granted") {
+
+      notificationToggle.classList.add("is-enabled");
+
+      if (notificationLabel) {
+        notificationLabel.textContent = "notif on";
+      }
+
+    } else {
+
+      notificationToggle.classList.remove("is-enabled");
+
+      if (notificationLabel) {
+        notificationLabel.textContent = "notif";
+      }
+
+    }
+  };
+
+
+  notificationToggle.addEventListener("click", async () => {
+
+    try {
+
+      const permission =
+        await Notification.requestPermission();
+
+      updateNotificationUI();
+
+      if (permission === "granted") {
+
+        new Notification("MH.DEV", {
+          body: "Selamat datang di ruang kecil gue. 👋",
+          icon: "aset/mh.png"
+        });
+
+      }
+
+    } catch (error) {
+
+      console.log(
+        "Notification error:",
+        error
+      );
+
+    }
+
+  });
+
+
+  updateNotificationUI();
+
+} else {
+
+  if (notificationToggle) {
+    notificationToggle.style.display = "none";
+  }
+
+}
